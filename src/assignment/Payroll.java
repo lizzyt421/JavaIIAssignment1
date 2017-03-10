@@ -30,9 +30,6 @@ public class Payroll implements Serializable
 		Payroll pay = new Payroll();
 		System.out.println("Welcome to the system.");
 		System.out.println("One moment, logging on...");
-		Thread.sleep(1000);
-		System.out.println("Successfully authenticated, loading system...");
-		Thread.sleep(1000);
 		pay.menu();
 	}
 
