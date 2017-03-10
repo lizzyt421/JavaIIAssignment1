@@ -7,7 +7,7 @@ import java.util.*;
  *
  * @author lizzy
  */
-public class Assignment {
+public class Employee {
 /*********************
 	     Attributes
 	*********************/
@@ -22,6 +22,15 @@ public class Assignment {
 	private String ID;
 	public int employeeID;
 	//End Attributes
+
+    //used for Payroll, Automated Solutions
+    Employee(String string) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    Employee() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 
 	/********************
 	 Constructors

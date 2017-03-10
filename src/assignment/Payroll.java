@@ -33,6 +33,7 @@ public class Payroll implements Serializable
 		pay.menu();
 	}
 
+        @SuppressWarnings("empty-statement")
 	public final void menu()
 	{
 		input = -99;
@@ -89,6 +90,22 @@ public class Payroll implements Serializable
 			}
 		} while (input != 5);
 	}
+//Automated Solutions
+    private void populateEmployees() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    private void selectEmployee() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    private void saveEmployee() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    private void loadEmployee() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 
 
 
