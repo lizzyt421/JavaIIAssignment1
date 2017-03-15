@@ -11,7 +11,8 @@ import java.io.File;
  *
  * @author lizzy
  */
-public class Commissioned {
+public class Commissioned extends Employee 
+{
 	private String ID;
 
 	public Commissioned(String arg_ID)
@@ -22,6 +23,11 @@ public class Commissioned {
 	{
 
 	}
+
+    /**
+     *
+     */
+    @Override
 	public void displayEmployee()
 	{
 		//Console.WriteLine("Hours: " + hours);
