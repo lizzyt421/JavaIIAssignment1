@@ -13,7 +13,7 @@ import java.util.Scanner;
  *
  * @author lizzy
  */
-public class Payroll implements Serializable
+public class Payroll extends Employee implements Serializable  
 {
     int[] empArray = new int [3];
     public void populateEmpArray()
@@ -38,12 +38,11 @@ public class Payroll implements Serializable
 	{
 		Payroll pay = new Payroll();
 		System.out.println("Welcome to the system.");
-		System.out.println("One moment, logging on...");
 		pay.menu();
 	}
 
-        @SuppressWarnings("empty-statement")
-	public final void menu()
+
+	public  void menu()
 	{
 		input = -99;
 		Employee em = new Employee();
@@ -51,7 +50,7 @@ public class Payroll implements Serializable
 		do
 		{
                         Scanner sc = new Scanner(System.in);
-                        int input;
+//                        int input;
 			System.out.println("\nWhat would you like to do?\n");
 			System.out.println("1) Populate Employees");
 			System.out.println("2) Select Employee");

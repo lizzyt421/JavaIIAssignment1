@@ -16,20 +16,12 @@ import java.io.IOException;
  */
 public class Commissioned extends Employee 
 {
-	private String ID;
+	private final String ID;
 
 	public Commissioned(String arg_ID)
 	{
 		ID = arg_ID;
 	}
-	public Commissioned()
-	{
-
-	}
-
-    /**
-     *
-     */
     @Override
 	public void displayEmployee()
 	{

@@ -18,16 +18,13 @@ import java.io.Serializable;
 public class Hourly extends Employee implements Serializable
 {
 
-	private String ID;
+	private final String ID;
 
 	public Hourly(String arg_ID)
 	{
 		ID = arg_ID;
 	}
-	public Hourly()
-	{
 
-	}
 	@Override
 	public void displayEmployee()
 	{
@@ -63,16 +60,6 @@ public class Hourly extends Employee implements Serializable
 	       System.out.println("Error in closing the BufferedWriter"+ex);
 	    }
 	}
-      
-//     		try (java.io.OutputStreamWriter sw = File.CreateText("C:\\Users\\Public\\TestFolder\\HourlyData.txt"))
-//		{
-//			sw.write("Hours: " + hours + System.lineSeparator());
-//			sw.write("Rate: " + taxrate + System.lineSeparator());
-//			sw.write("Gross: " + gross + System.lineSeparator());
-//			sw.write("Net: " + net + System.lineSeparator());
-//		}
-//		System.out.println("Successfully wrote Hourly paystub to file.");
-
-	}
+      }
 }
 

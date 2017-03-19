@@ -14,16 +14,13 @@ import java.util.Scanner;
  */
 public class Salaried extends Employee implements Serializable
 {
-	private String ID;
+	private final String ID;
 
 	public Salaried(String arg_ID)
 	{
 		ID = arg_ID;
 	}
-	public Salaried()
-	{
 
-	}
 	@Override
 	public void displayEmployee()
 	{
