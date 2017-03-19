@@ -5,6 +5,8 @@
  */
 package assignment;
 
+import java.io.Console;
+import java.io.File;
 import java.io.Serializable;
 import java.util.Scanner;
 
@@ -90,24 +92,117 @@ public class Payroll implements Serializable
 			}
 		} while (input != 5);
 	}
-//Automated Solutions
-    private void populateEmployees() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 
-    private void selectEmployee() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+public final void populateEmployees()
+	{
+		Employee em = new Employee();
+		System.out.println("Please fill out the attributes for the employees you wish to add\n");
 
-    private void saveEmployee() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+		for (int i = 0; i < empArray.length; i++)
+		{
+			if (i == 0)
+			{
+				//Hourly employee
+				empArray[i] = new Hourly();
+				System.out.println("Hourly employee:\nHow many hours?");
+				input = Integer.parseInt(new Scanner(System.in).nextLine());
+				empArray[0].hours = input;
+				System.out.println("Pay rate:");
+				input = Integer.parseInt(new Scanner(System.in).nextLine());
+				empArray[0].rate = input;
+			}
+			else if (i == 1)
+			{
+				//Salaried employees
+				empArray[i] = new Salaried();
+				System.out.println("\nSalary employee:\nStaff or executive? (1 or 9)");
+				input = Integer.parseInt(new Scanner(System.in).nextLine());
+				if (input == 1)
+				{
+					empArray[1].gross = 50000;
+				}
+				else if (input == 9)
+				{
+					empArray[1].gross = 100000;
+				}
+			}
+			else if (i == 2)
+			{
+				//Commissioned employee
+				empArray[i] = new Commissioned();
+				System.out.println("\nCommissioned employee:\nNumber of items sold?");
+				input = Integer.parseInt(new Scanner(System.in).nextLine());
+				numberItems = input;
+				System.out.println("Unit price of items sold?");
+				input = Integer.parseInt(new Scanner(System.in).nextLine());
+				empArray[2].gross = 0.5f * (input * numberItems);
+			}
+			else
+			{
 
-    private void loadEmployee() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+			}
+		}
 
+		employeesExist = true;
+	}
 
+	public final void selectEmployee()
+	{
+		String sinput = null;
+		int input;
+		input = -1;
+		while (input != -99)
+		{
+			Employee em = new Employee();
+			System.out.println("\nPlease Select an employee:\n");
+			System.out.println("Enter 0 for an Hourly Employee \nEnter 1 for a Salary Employee \nEnter 2 for a Comission Employee \nEnter -99 to Go Back");
+			sinput = new Scanner(System.in).nextLine();
+			input = Integer.parseInt(sinput);
+			if (input != -99)
+			{
+				if (input == 0 || input == 1 || input == 2)
+				{
+					empArray[input].employeeID = input;
+					empArray[input].menu();
+				}
+				else
+				{
+					System.out.println("Invalid input. Please enter  0 for an Hourly Employee, 1 for a Salary Employee, 2 for a Comission Employee, or -99 to Go Back");
+				}
+
+			}
+			else
+			{
+				System.out.println("Goodbye.");
+			}
+		}
+	}
+	public final void saveEmployee()
+	{
+		Hourly hr = new Hourly();
+		Salaried sal = new Salaried();
+		Commissioned com = new Commissioned();
+		System.IO.Stream FileStream = File.Create("C:\\Users\\Public\\TestFolder\\WriteLines.xml");
+		BinaryFormatter serializer = new BinaryFormatter();
+		serializer.Serialize(FileStream, empArray);
+		FileStream.Close();
+		System.out.println("\nYour changes have been saved.  Goodbye.");
+		System.exit(0);
+	}
+	public final void loadEmployee()
+	{
+		Stream FileStream = File.OpenRead("C:\\Users\\Public\\TestFolder\\WriteLines.xml");
+		//XmlSerializer deserializer = new XmlSerializer(typeof(Account[]));
+		BinaryFormatter deserializer = new BinaryFormatter();
+		empArray = (Employee[])deserializer.Deserialize(FileStream);
+		FileStream.Close();
+		employeesExist = true;
+
+		//var serializer = new XmlSerializer(typeof(EmployeeContainer));
+		//var stream = new FileStream(path, FileMode.Open);
+		//var container = serializer.Deserialize(stream) as EmployeeContainer;
+		//stream.Close();
+	}
 
 }
 
