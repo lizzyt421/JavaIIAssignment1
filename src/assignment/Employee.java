@@ -1,6 +1,5 @@
 
 package assignment;
-//import java.io.Serializable;
 import java.util.*;
 
 /**
@@ -23,28 +22,6 @@ public class Employee {
 	public int employeeID;
 	//End Attributes
 
-    //used for Payroll, Automated Solutions
-    Employee(String string) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    Employee() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-	/********************
-	 Constructors
-     * @param arg_ID
-	********************/
-//	public Employee(String arg_ID)
-//	{
-//		ID = arg_ID;
-//	}
-//	public Employee()
-//	{
-//
-//	}
-
 	/********************
 	     Methods
 	********************/
@@ -55,10 +32,7 @@ public class Employee {
 		{
 			System.out.println("\nWhat would you like to do?\n");
 			System.out.println("1) Calculate Gross Pay, Tax, Net Pay, and Net Percent");
-			//Console.WriteLine("2) Calculate Tax");
-			//Console.WriteLine("3) Calculate Net Pay");
-			//Console.WriteLine("4) Calculate Net Percent");
-			System.out.println("3) Display Employee");
+			System.out.println("2) Display Employee");
 			System.out.println("6) Go Back");
 			input = Integer.parseInt(new Scanner(System.in).nextLine());
 			if (input == 1)
@@ -69,19 +43,7 @@ public class Employee {
 				computeNetperc();
 				displayEmployee();
 			}
-			//else if (input == 2)
-			//{
-			//    computeTax();
-			//}
-			//else if (input == 3)
-			//{
-			//    computeNet();
-			//}
-			//else if (input == 4)
-			//{
-			//    computeNetperc();
-			//}
-			else if (input == 3)
+			else if (input == 2)
 			{
 				displayEmployee();
 			}

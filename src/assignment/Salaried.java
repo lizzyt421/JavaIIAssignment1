@@ -1,12 +1,12 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package assignment;
 
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.io.Serializable;
+import java.util.Scanner;
 
 /**
  *
@@ -33,15 +33,36 @@ public class Salaried extends Employee implements Serializable
 		System.out.println("Tax: " + tax);
 		System.out.println("Net: " + net);
 		System.out.println("Net%: " + net_percent + "%");
-		try (java.io.OutputStreamWriter sw = File.CreateText("C:\\Users\\Public\\TestFolder\\SalariedData.txt"))
-		{
-			//sw.WriteLine("Hours: " + hours);
-			//sw.WriteLine("Rate: " + taxrate);
-			sw.write("Gross: " + gross + System.lineSeparator());
-			sw.write("Net: " + net + System.lineSeparator());
-			sw.write("Net%: " + net_percent + "%" + System.lineSeparator());
-		}
-		System.out.println("Successfully wrote Salaried paystub to file.");
+                
 
+        try {
+             File file = new File("C:\\Users\\Public\\TestFolder\\SalariedData.txt");
+                                  
+            if (!file.exists()) 
+            {
+                file.createNewFile();
+            }
+            FileWriter fw = new FileWriter(file, true);
+                    try (BufferedWriter bw = new BufferedWriter(fw)) 
+                        {
+                            System.out.println("Please choose an account number[0,1,2]: ");
+                            Scanner sc = new Scanner(System.in);
+                            int input = sc.nextInt();
+                            String tempString = Salaried[input].getAcctNum();
+                            double tempNumber = myAccounts[input].getBalance();
+                            String tempStringNum = Double.toString(tempNumber);
+                            bw.write(tempString);
+                            bw.write("|");
+                            bw.write(tempStringNum);
+                            bw.newLine();
+                        }
+            System.out.println("Successfully wrote Salaried paystub to file.");
+            } 
+            catch (IOException ex) 
+            {
+//                e.printStackTrace();
+                 System.out.println("Error in closing the BufferedWriter"+ex);
+            }
+              
 	}
 }

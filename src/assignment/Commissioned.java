@@ -5,7 +5,10 @@
  */
 package assignment;
 
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 
 /**
  *
@@ -30,22 +33,34 @@ public class Commissioned extends Employee
     @Override
 	public void displayEmployee()
 	{
-		//Console.WriteLine("Hours: " + hours);
-		//Console.WriteLine("Rate: " + rate);
 		System.out.println("Gross: " + gross);
 		System.out.println("Tax: " + tax);
 		System.out.println("Net: " + net);
 		System.out.println("Net%: " + net_percent + "%");
-		try (java.io.OutputStreamWriter sw = File.CreateText("C:\\Users\\Public\\TestFolder\\CommissionedData.txt"))
-		{
-			//sw.WriteLine("Hours: " + hours);
-			//sw.WriteLine("Rate: " + taxrate);
-			sw.write("Gross: " + gross + System.lineSeparator());
-			sw.write("Net: " + net + System.lineSeparator());
-			sw.write("Net%: " + net_percent + "%" + System.lineSeparator());
-		}
-		System.out.println("Successfully wrote Commissioned paystub to file.");
-
+                                  BufferedWriter bw = null;
+      try {
+	 String mycontent = "Gross: " + gross + " | " + "Net: " + net + " | " + "Net%: " + net_percent ;
+	 File file = new File("C:\\Users\\Public\\TestFolder\\CommissionedData.txt");
+	  if (!file.exists()) {
+	     file.createNewFile();
+	  }
+	  FileWriter fw = new FileWriter(file);
+	  bw = new BufferedWriter(fw);
+	  bw.write(mycontent);
+          System.out.println("File written Successfully");
+      } catch (IOException ioe) {
+	   ioe.printStackTrace();
+	}
+	finally
+	{ 
+	   try{
+	      if(bw!=null)
+                 System.out.println("Successfully wrote Hourly paystub to file.");
+		 bw.close();
+	   }catch(Exception ex){
+	       System.out.println("Error in closing the BufferedWriter"+ex);
+	    }
+	}
 	}
 }
     

@@ -5,7 +5,10 @@
  */
 package assignment;
 
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.io.Serializable;
 
 /**
@@ -34,14 +37,41 @@ public class Hourly extends Employee implements Serializable
 		System.out.println("Tax: " + tax);
 		System.out.println("Net: " + net);
 		System.out.println("Net%: " + net_percent + "%");
-		try (java.io.OutputStreamWriter sw = File.CreateText("C:\\Users\\Public\\TestFolder\\HourlyData.txt"))
-		{
-			sw.write("Hours: " + hours + System.lineSeparator());
-			sw.write("Rate: " + taxrate + System.lineSeparator());
-			sw.write("Gross: " + gross + System.lineSeparator());
-			sw.write("Net: " + net + System.lineSeparator());
-		}
-		System.out.println("Successfully wrote Hourly paystub to file.");
+                
+                
+                  BufferedWriter bw = null;
+      try {
+	 String mycontent = "This String would be written" + "Hours: " + hours + "|" + "Rate: " + taxrate + "|" + "Gross: " + gross + "|" + "Net: " + net;
+	 File file = new File("C:\\Users\\Public\\TestFolder\\HourlyData.txt");
+	  if (!file.exists()) {
+	     file.createNewFile();
+	  }
+	  FileWriter fw = new FileWriter(file);
+	  bw = new BufferedWriter(fw);
+	  bw.write(mycontent);
+          System.out.println("File written Successfully");
+      } catch (IOException ioe) {
+	   ioe.printStackTrace();
+	}
+	finally
+	{ 
+	   try{
+	      if(bw!=null)
+                 System.out.println("Successfully wrote Hourly paystub to file.");
+		 bw.close();
+	   }catch(Exception ex){
+	       System.out.println("Error in closing the BufferedWriter"+ex);
+	    }
+	}
+      
+//     		try (java.io.OutputStreamWriter sw = File.CreateText("C:\\Users\\Public\\TestFolder\\HourlyData.txt"))
+//		{
+//			sw.write("Hours: " + hours + System.lineSeparator());
+//			sw.write("Rate: " + taxrate + System.lineSeparator());
+//			sw.write("Gross: " + gross + System.lineSeparator());
+//			sw.write("Net: " + net + System.lineSeparator());
+//		}
+//		System.out.println("Successfully wrote Hourly paystub to file.");
 
 	}
 }
