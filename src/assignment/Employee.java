@@ -27,6 +27,7 @@ public class Employee {
 	********************/
 	public final void menu()
 	{
+                Scanner sc = new Scanner(System.in);
 		int input;
 		do
 		{

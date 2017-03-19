@@ -4,8 +4,7 @@
  * and open the template in the editor.
  */
 package assignment;
-
-import java.io.Console;
+//import java.io.Console;
 import java.io.File;
 import java.io.Serializable;
 import java.util.Scanner;
@@ -16,12 +15,20 @@ import java.util.Scanner;
  */
 public class Payroll implements Serializable
 {
-	public Employee[] empArray =
-	{
-		new Employee("123"),
-		new Employee("456"),
-		new Employee("789")
-	};
+    int[] empArray = new int [3];
+    public void populateEmpArray()
+    {
+        empArray [0] = 1;
+        empArray [1] = 2;
+        empArray [2] = 3;
+    }   
+//	int arr[] = new int [] {123, 456, 789};
+//	public Employee[] empArray ={123, 456, 789};
+//	{
+//		new Employee("123"),
+//		new Employee("456"),
+//		new Employee("789")
+//	};
 	private int input;
 	public int numberItems;
 	public boolean employeesExist = false;
@@ -43,6 +50,8 @@ public class Payroll implements Serializable
 
 		do
 		{
+                        Scanner sc = new Scanner(System.in);
+                        int input;
 			System.out.println("\nWhat would you like to do?\n");
 			System.out.println("1) Populate Employees");
 			System.out.println("2) Select Employee");
@@ -182,7 +191,7 @@ public final void populateEmployees()
 		Hourly hr = new Hourly();
 		Salaried sal = new Salaried();
 		Commissioned com = new Commissioned();
-		System.IO.Stream FileStream = File.Create("C:\\Users\\Public\\TestFolder\\WriteLines.xml");
+		System.IO.Stream FileStream = new File("C:\\Users\\Public\\TestFolder\\WriteLines.xml");
 		BinaryFormatter serializer = new BinaryFormatter();
 		serializer.Serialize(FileStream, empArray);
 		FileStream.Close();
