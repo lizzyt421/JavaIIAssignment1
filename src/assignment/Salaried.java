@@ -6,7 +6,7 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Serializable;
-import java.util.Scanner;
+//import java.util.Scanner;
 
 /**
  *
@@ -14,7 +14,7 @@ import java.util.Scanner;
  */
 public class Salaried extends Employee implements Serializable
 {
-	private final String ID;
+	public final String ID;
 
 	public Salaried(String arg_ID)
 	{
@@ -31,33 +31,37 @@ public class Salaried extends Employee implements Serializable
 		System.out.println("Net: " + net);
 		System.out.println("Net%: " + net_percent + "%");
                 
-
+        BufferedWriter bw = null;
         try {
+             String SalData = "Gross: " + gross + " | " + "Tax: " + tax + " | " + "Net: " + net + " | " + "Net%: " + net_percent ;
              File file = new File("C:\\Users\\Public\\TestFolder\\SalariedData.txt");
                                   
             if (!file.exists()) 
             {
                 file.createNewFile();
             }
-            FileWriter fw = new FileWriter(file, true);
-                    try (BufferedWriter bw = new BufferedWriter(fw)) 
-                        {
-                            System.out.println("Please choose an account number[0,1,2]: ");
-                            Scanner sc = new Scanner(System.in);
-                            int input = sc.nextInt();
-                            String tempString = Salaried[input].getAcctNum();
-                            double tempNumber = myAccounts[input].getBalance();
-                            String tempStringNum = Double.toString(tempNumber);
-                            bw.write(tempString);
-                            bw.write("|");
-                            bw.write(tempStringNum);
-                            bw.newLine();
-                        }
+          FileWriter fw = new FileWriter(file, true);
+	  bw = new BufferedWriter(fw);
+	  bw.write(SalData);
+          System.out.println("File written Successfully");
+//                    try (BufferedWriter bw = new BufferedWriter(fw)) 
+//                        {
+//                            System.out.println("Please choose an account number[0,1,2]: ");
+//                            Scanner sc = new Scanner(System.in);
+//                            int input = sc.nextInt();
+//                            String tempString = Salaried[input].getAcctNum();
+//                            double tempNumber = myAccounts[input].getBalance();
+//                            String tempStringNum = Double.toString(tempNumber);
+//                            bw.write(tempString);
+//                            bw.write("|");
+//                            bw.write(tempStringNum);
+//                            bw.newLine();
+//                        }
             System.out.println("Successfully wrote Salaried paystub to file.");
             } 
             catch (IOException ex) 
             {
-//                e.printStackTrace();
+//              e.printStackTrace();
                  System.out.println("Error in closing the BufferedWriter"+ex);
             }
               

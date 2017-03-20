@@ -25,13 +25,13 @@ public class Employee {
 	/********************
 	     Methods
 	********************/
-	public final void menu()
+	public void menu()
 	{
                 Scanner sc = new Scanner(System.in);
 		int input;
 		do
 		{
-			System.out.println("\nWhat would you like to do?\n");
+			System.out.println("What would you like to do?");
 			System.out.println("1) Calculate Gross Pay, Tax, Net Pay, and Net Percent");
 			System.out.println("2) Display Employee");
 			System.out.println("6) Go Back");
@@ -52,7 +52,7 @@ public class Employee {
 		} while (input != 6);
 	}
 
-	public final void computeGross() //hourly employees only
+	public void computeGross() //hourly employees only
 	{
 		if (employeeID == 0)
 		{
@@ -96,9 +96,6 @@ public class Employee {
 		System.out.println("Net: " + net);
 		System.out.println("Net%: " + net_percent + "%");
 	}
-    public static void main(String[] args) {
-     
-     
-    }
+   
     
 }

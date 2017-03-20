@@ -31,14 +31,14 @@ public class Commissioned extends Employee
 		System.out.println("Net%: " + net_percent + "%");
                                   BufferedWriter bw = null;
       try {
-	 String mycontent = "Gross: " + gross + " | " + "Net: " + net + " | " + "Net%: " + net_percent ;
+	 String CommissData = "Gross: " + gross + " | " + "Net: " + net + " | " + "Net%: " + net_percent ;
 	 File file = new File("C:\\Users\\Public\\TestFolder\\CommissionedData.txt");
 	  if (!file.exists()) {
 	     file.createNewFile();
 	  }
 	  FileWriter fw = new FileWriter(file);
 	  bw = new BufferedWriter(fw);
-	  bw.write(mycontent);
+	  bw.write(CommissData);
           System.out.println("File written Successfully");
       } catch (IOException ioe) {
 	   ioe.printStackTrace();

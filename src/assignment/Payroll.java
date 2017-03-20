@@ -29,20 +29,18 @@ public class Payroll extends Employee implements Serializable
 //		new Employee("456"),
 //		new Employee("789")
 //	};
-	private int input;
+	public int input;
 	public int numberItems;
 	public boolean employeesExist = false;
-	//public string path;
-
-	public static void main(String[] args)
+   	public static void main(String[] args)
 	{
 		Payroll pay = new Payroll();
 		System.out.println("Welcome to the system.");
 		pay.menu();
 	}
 
-
-	public  void menu()
+    @Override
+	public void menu()
 	{
 		input = -99;
 		Employee em = new Employee();
@@ -101,7 +99,7 @@ public class Payroll extends Employee implements Serializable
 		} while (input != 5);
 	}
 
-public final void populateEmployees()
+public void populateEmployees()
 	{
 		Employee em = new Employee();
 		System.out.println("Please fill out the attributes for the employees you wish to add\n");
@@ -112,18 +110,18 @@ public final void populateEmployees()
 			{
 				//Hourly employee
 				empArray[i] = new Hourly();
-				System.out.println("Hourly employee:\nHow many hours?");
+				System.out.println("Hourly employee: How many hours?");
 				input = Integer.parseInt(new Scanner(System.in).nextLine());
-				empArray[0].hours = input;
-				System.out.println("Pay rate:");
-				input = Integer.parseInt(new Scanner(System.in).nextLine());
-				empArray[0].rate = input;
+                                empArray[0].hours = input;
+//				System.out.println("Pay rate:");
+//				input = Integer.parseInt(new Scanner(System.in).nextLine());
+//				empArray[0].rate = input;
 			}
 			else if (i == 1)
 			{
 				//Salaried employees
 				empArray[i] = new Salaried();
-				System.out.println("\nSalary employee:\nStaff or executive? (1 or 9)");
+				System.out.println("Salary employee: Staff or executive? (1 or 9)");
 				input = Integer.parseInt(new Scanner(System.in).nextLine());
 				if (input == 1)
 				{
@@ -138,7 +136,7 @@ public final void populateEmployees()
 			{
 				//Commissioned employee
 				empArray[i] = new Commissioned();
-				System.out.println("\nCommissioned employee:\nNumber of items sold?");
+				System.out.println("Commissioned employee: Number of items sold?");
 				input = Integer.parseInt(new Scanner(System.in).nextLine());
 				numberItems = input;
 				System.out.println("Unit price of items sold?");
@@ -162,8 +160,8 @@ public final void populateEmployees()
 		while (input != -99)
 		{
 			Employee em = new Employee();
-			System.out.println("\nPlease Select an employee:\n");
-			System.out.println("Enter 0 for an Hourly Employee \nEnter 1 for a Salary Employee \nEnter 2 for a Comission Employee \nEnter -99 to Go Back");
+			System.out.println("Please Select an employee:");
+			System.out.println("Enter 0 for an Hourly EmployeenEnter 1 for a Salary Employee, Enter 2 for a Comission Employee, or Enter -99 to Go Back");
 			sinput = new Scanner(System.in).nextLine();
 			input = Integer.parseInt(sinput);
 			if (input != -99)
